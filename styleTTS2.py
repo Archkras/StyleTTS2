@@ -13,9 +13,11 @@ import numpy as np
 
 np.random.seed(0)
 
-import random
-
 # load packages
+import nltk
+
+nltk.download("punkt")
+import random
 import time
 
 import librosa
@@ -382,27 +384,16 @@ def STinference(
     )  # weird pulse at the end of the model, need to be fixed later
 
 
-# reference_dicts['F'] = "voices/696_92939_000016_000006.wav"
-# reference_dicts['M'] = "voices/1789_142896_000022_000005.wav"
-
 noise = torch.randn(1, 1, 256).to(device)
 
 
 def TTS2(text, gender="M", noise=noise):
     reference_dicts = {}
-    # if gender == 'F':
-    #     reference_dicts['F'] = "voices/696_92939_000016_000006.wav"
-    # else:
-    #     reference_dicts['M'] = "voices/1789_142896_000022_000005.wav"
 
     if gender == "F":
-        reference_dicts["F"] = (
-            "StyleTTS2/Demo/reference_audio/696_92939_000016_000006.wav"
-        )
+        reference_dicts["F"] = f"{root_path}voices/696_92939_000016_000006.wav"
     else:
-        reference_dicts["M"] = (
-            "StyleTTS2/Demo/reference_audio/1789_142896_000022_000005.wav"
-        )
+        reference_dicts["M"] = f"{root_path}voices/1789_142896_000022_000005.wav"
 
     for k, path in reference_dicts.items():
         ref_s = compute_style(path)
