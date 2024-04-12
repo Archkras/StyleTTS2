@@ -12,4 +12,4 @@ else:
     install_styleTTS2_fix()
 
 
-from .styleTTS2 import TTS2
+from .styleTTS2 import TTS2, compute_style, inference
