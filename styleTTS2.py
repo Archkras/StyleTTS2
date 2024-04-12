@@ -384,10 +384,10 @@ def STinference(
     )  # weird pulse at the end of the model, need to be fixed later
 
 
-noise = torch.randn(1, 1, 256).to(device)
+# noise = torch.randn(1, 1, 256).to(device)
 
 
-def TTS2(text, gender="M", noise=noise):
+def TTS2(text, gender="M"):  # , noise=noise
     reference_dicts = {}
 
     if gender == "F":
